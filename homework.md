@@ -1,0 +1,9 @@
+- Create a repository
+- Initialize the repository
+- node_modules, package.json, package-lock.json
+- Install express in you app
+- Create a server
+- Listen to port number:9999
+- Make/Write request handlers for /test , /hello
+- Install nodemon and Update scripts (start, dev) inside package.json
+- Run nodemon
