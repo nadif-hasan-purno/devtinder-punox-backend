@@ -7,3 +7,17 @@
 - Make/Write request handlers for /test , /hello (done)
 - Install nodemon and Update scripts (start, dev) inside package.json (done)
 - Run nodemon (done)
+- What are dependencies
+- What is the use of "-g" while npm install
+- Difference between caret and tilde ( ^ vs ~ )
+
+
+- Initialize git
+- .gitignore
+- Create a remote repo on github
+- push all code to remote origin
+- Play with Routes and route extensions ex. /hello, /hello/2, /xyz
+- Order of these routes matters a lot.
+- Installed Postman app 
+- made a workspace/collection > test Get API call 
+- Write logic to handle Get, POST, PATCH, DELETE API calls and test them on Postman.
