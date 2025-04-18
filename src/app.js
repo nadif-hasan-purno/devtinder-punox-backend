@@ -2,30 +2,27 @@ const express = require("express");
 
 const app = express();
 
-// GET /user => middleware chain => response (request/route handler)
+const { adminAuth, userAuth } = require("./middlewares/auth");
 
-// app.use("/route", rH, [rH2, rH3], rH4, rH5);
-// Router Handler functions can be wrapped in an array and passed as middleware functions
-// This will work as well
+app.use("/admin", adminAuth);
 
-app.use("/", (req, res, next) => {
-  console.log("Middleware 1");
-  // res.send("Hello from Middleware 1");
-  next(); // Call the next middleware function in the stack
+app.post("/user/login", (req, res, next) => {
+  res.send("User login successful");
 });
 
-app.get(
-  "/user",
-  (req, res, next) => {
-    console.log("Middleware 2");
-    res.send("Hello from Middleware 2");
-    next(); // Call the next middleware function in the stack
-  },
-  (req, res, next) => {
-    console.log("Middleware 3");
-    // res.send("Hello from Middleware 3");
-  }
-);
+app.get("/user", userAuth, (req, res, next) => {
+  res.send("User middleware checking authorization...");
+});
+
+app.get("/admin/getAllData", (req, res, next) => {
+  res.send("All data retrieved successfully");
+});
+
+app.get("/admin/deleteUser", (req, res, next) => {
+  // Logic to delete user from the database
+
+  res.send("User deleted successfully");
+});
 
 app.listen(7777, () => {
   console.log("Server is running on port 7777");
