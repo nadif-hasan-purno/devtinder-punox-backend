@@ -11,23 +11,22 @@
 - What is the use of "-g" while npm install
 - Difference between caret and tilde ( ^ vs ~ )
 
-
 - Initialize git
 - .gitignore
 - Create a remote repo on github
 - push all code to remote origin
 - Play with Routes and route extensions ex. /hello, /hello/2, /xyz
 - Order of these routes matters a lot.
-- Installed Postman app 
-- made a workspace/collection > test Get API call 
+- Installed Postman app
+- made a workspace/collection > test Get API call
 - Write logic to handle Get, POST, PATCH, DELETE API calls and test them on Postman.
-- Explore Different kinds of Routing 
+- Explore Different kinds of Routing
 - USE of => [ ?, +, *, (), ] in the Routes
-- Use of REGEX in the routes [ /a/, /.*fly$/] 
-- Reading the query params in the routes 
-- Reading the dynamic routes 
-
+- Use of REGEX in the routes [ /a/, /.*fly$/]
+- Reading the query params in the routes
+- Reading the dynamic routes
 
 - Multiple Route Handlers - Play with the code
 - next()
 - next function and errors along with res.send()
+- read more about MIDDLEWARE and How expressjs handles request behind the scene

@@ -2,48 +2,28 @@ const express = require("express");
 
 const app = express();
 
+// GET /user => middleware chain => response (request/route handler)
+
 // app.use("/route", rH, [rH2, rH3], rH4, rH5);
 // Router Handler functions can be wrapped in an array and passed as middleware functions
 // This will work as well
 
-app.use(
+app.use("/", (req, res, next) => {
+  console.log("Middleware 1");
+  // res.send("Hello from Middleware 1");
+  next(); // Call the next middleware function in the stack
+});
+
+app.get(
   "/user",
   (req, res, next) => {
-    // This is a Router Handler
-    console.log("Handling the User Route Handler 1");
-    // Call the next middleware function in the stack
-    next();
-
-    // if we don't send a response, the request will hang
-    // res.send("User Route Handler 1");
+    console.log("Middleware 2");
+    res.send("Hello from Middleware 2");
+    next(); // Call the next middleware function in the stack
   },
   (req, res, next) => {
-    // This is a Router Handler
-    console.log("Handling the User Route Handler 2");
-    next();
-    // Call the next middleware function in the stack
-    // if we don't send a response, the request will hang
-    // res.send("User Route Handler 2");
-  },
-  (req, res, next) => {
-    // This is a Router Handler
-    console.log("Handling the User Route Handler 3");
-    // if we don't send a response, the request will hang
-    // res.send("User Route Handler 3");
-    next();
-  },
-  (req, res, next) => {
-    // This is a Router Handler
-    console.log("Handling the User Route Handler 4");
-    // if we don't send a response, the request will hang
-    // res.send("User Route Handler 4");
-    next();
-  },
-  (req, res, next) => {
-    // This is a Router Handler
-    console.log("Handling the User Route Handler 5");
-    // if we don't send a response, the request will hang
-    res.send("User Route Handler 5");
+    console.log("Middleware 3");
+    // res.send("Hello from Middleware 3");
   }
 );
 
