@@ -2,26 +2,22 @@ const express = require("express");
 
 const app = express();
 
-const { adminAuth, userAuth } = require("./middlewares/auth");
-
-app.use("/admin", adminAuth);
-
-app.post("/user/login", (req, res, next) => {
-  res.send("User login successful");
+app.use("/", (err, req, res, next) => {
+  if (err) {
+    // Log the error to the console
+    // Can get some alerts from here and get more information about the error
+    res.status(500).send("Something went wrong!");
+  }
 });
 
-app.get("/user", userAuth, (req, res, next) => {
-  res.send("User middleware checking authorization...");
-});
-
-app.get("/admin/getAllData", (req, res, next) => {
-  res.send("All data retrieved successfully");
-});
-
-app.get("/admin/deleteUser", (req, res, next) => {
-  // Logic to delete user from the database
-
-  res.send("User deleted successfully");
+app.get("/getUserData", (req, res) => {
+  // try {
+  // Logic to get user data from the database
+  throw new Error("sfdfsdf");
+  res.send("User data Sent");
+  // } catch (err) {
+  // res.status(500).send("Some error occurred while getting user data!");
+  // }
 });
 
 app.listen(7777, () => {
