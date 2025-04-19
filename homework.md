@@ -44,6 +44,17 @@
 - Create a user Model
 - Created POST /signup API to add data to database
 - Push some documents using API calls from Postman
+
 - What is the difference between JS object vs JSON (difference)
 - Add the express.json middleware to your app
 - Make your /signup API dynamic to recieve data from the end user.
+- User.findOne with duplicate emailId's, which one will it return. and why?
+- API - Get user by email
+- API - Feed API - GET /feed - get all the users from the database
+- API - Get userById - using Model.findById()
+- Created a Delete user API
+- Difference between patch and put.
+- API - Created a Update user
+- Explore the Mongoose Documentation - For MODEL methods.
+- What are options in a model.findOneAndUpdate() API/method, know more about it.
+- API - Update the user api with email ID.
