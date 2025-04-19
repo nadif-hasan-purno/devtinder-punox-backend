@@ -35,3 +35,14 @@
 - Write a dummy auth middleware for admin
 - Write a dummy auth middleware for all user routes, except /user/login.
 - Error Handling - app.use("/", (err, req, res, next) => {} ); and must keep this function in the last position.
+
+
+- Created a free cluster on MongoDb official website(MongoDb atlas)
+- Then Install Mongoose Library
+- Connect application to the Database "Connection-url"/devTinder
+- Call the connectDB function and connect to database before starting application on 7777
+- Create a user Schema in your project
+- Create a user Model
+- Created POST /signup API to add data to database 
+- Push some documents using API calls from Postman
+- 
