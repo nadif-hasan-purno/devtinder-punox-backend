@@ -68,3 +68,5 @@
 - Add API level validation on Patch request & Signup post api
 - Add API validation in each field.
 - All field should be sanitized.
+- Installed Validator
+- Explore Validator library functions and use validator fn's for password, email, photo, URL.

@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const validator = require("validator");
 
 const userSchema = new mongoose.Schema(
   {
@@ -18,15 +19,24 @@ const userSchema = new mongoose.Schema(
       lowercase: true,
       trim: true,
       validate(value) {
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!validator.isEmail(value)) {
+          throw new Error("Invalid email address:" + value);
+        }
+
+        /* const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // Old way of validating email
         if (!emailRegex.test(value)) {
           throw new Error("Invalid email format");
-        }
+        } */
       },
     },
     password: {
       type: String,
       required: true,
+      validate(value) {
+        if (!validator.isStrongPassword(value)) {
+          throw new Error("Password is not strong enough");
+        }
+      },
     },
     age: {
       type: Number,
@@ -45,8 +55,12 @@ const userSchema = new mongoose.Schema(
     },
     photoUrl: {
       type: String,
-      default:
-        "https://www.ihna.edu.au/blog/wp-content/uploads/2022/10/user-dummy-800x789.png",
+      default: "https://cdn-icons-png.flaticon.com/512/8188/8188359.png",
+      validate(value) {
+        if (!validator.isURL(value)) {
+          throw new Error("Invalid Photo URL:" + value);
+        }
+      },
     },
     bio: {
       type: String,
