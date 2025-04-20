@@ -77,6 +77,7 @@ app.patch("/user", async (req, res) => {
   try {
     const user = await User.findByIdAndUpdate({ _id: userId }, data, {
       returnDocument: "after",
+      runValidators: true,
     });
     console.log(user);
     res.send("User updated successfully");
@@ -85,17 +86,14 @@ app.patch("/user", async (req, res) => {
   }
 });
 
-
 // API - Update user by emailId
 app.put("/user", async (req, res) => {
   const userEmail = req.body.emailId;
   const data = req.body;
   try {
-    const user = await User.findOneAndUpdate(
-      { emailId: userEmail },
-      data,
-      { returnDocument: "before" }
-    );
+    const user = await User.findOneAndUpdate({ emailId: userEmail }, data, {
+      returnDocument: "before",
+    });
     console.log(user);
     res.send("User updated successfully");
   } catch (err) {
