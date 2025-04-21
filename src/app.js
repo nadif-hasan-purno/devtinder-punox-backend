@@ -3,19 +3,35 @@ const connectDB = require("./config/database");
 const app = express();
 const User = require("./models/user");
 const user = require("./models/user");
+const { validateSignUpData } = require("./utils/validation");
+const bcrypt = require("bcrypt");
 
 app.use(express.json()); // Middleware to parse JSON request bodies
 
 app.post("/signup", async (req, res) => {
-  // Creating a new instance of the User model
-  // and passing the userObject to it
-  const user = new User(req.body);
-
   try {
+    // Validation of data
+    validateSignUpData(req);
+
+    const { firstName, lastName, emailId, password } = req.body;
+
+    // Encrypt the password
+    const passwordHash = await bcrypt.hashSync(password, 10);
+    // req.body.password = passwordHash;
+
+    // Creating a new instance of the User model
+    // and passing the userObject to it
+    const user = new User({
+      firstName,
+      lastName,
+      emailId,
+      password: passwordHash,
+    });
+
     await user.save();
     res.send("User added successfully");
   } catch (err) {
-    res.status(500).send("Error adding user: " + err.message);
+    res.status(400).send("Error adding user: " + err.message);
   }
 });
 

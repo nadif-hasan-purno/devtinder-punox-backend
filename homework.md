@@ -71,3 +71,7 @@
 - Installed Validator
 - Explore Validator library functions and use validator fn's for password, email, photo, URL.
 - Never in your life trust [req.body]
+
+- Validate data in SignUp API with a helper/utils function
+- Install bcrypt package
+- Create a PasswordHash using bcrypt.hash & save the user is encripted password
