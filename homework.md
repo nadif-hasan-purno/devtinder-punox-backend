@@ -90,7 +90,6 @@
 - Create userSchema method to getJWT()
 - Crete UserSchema method to comparePassword(passwordInputByUser)
 
-
 - Explore tinder APIs
 - Create a list all API you can think of in Dev Tinder
 - Group multiple routes under respective routers
@@ -98,6 +97,8 @@
 - Create routes folder for managing auth, profile, request routers.
 - Create authRouter, profileRouter, requestRouter
 - Import these routers in app.js
-
-
-
+- Create POST /logout API
+- Create PATCH /profile/edit
+- Create PATCH /profile/password
+- Create GET /profile/view
+- Make sure to validate all data in every POST and PATCH request. these very very important APIs.

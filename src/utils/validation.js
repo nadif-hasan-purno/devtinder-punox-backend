@@ -13,4 +13,40 @@ const validateSignUpData = (req) => {
   }
 };
 
-module.exports = { validateSignUpData };
+const validateEditProfileData = (req) => {
+  const allowedEditFields = [
+    "firstName",
+    "lastName",
+    "gender",
+    "address",
+    "age",
+    "photoUrl",
+    "bio",
+    "skills",
+  ];
+
+  const isEditAllowed = Object.keys(req.body).every((field) =>
+    allowedEditFields.includes(field)
+  );
+
+  return isEditAllowed;
+};
+
+// validation API - /profile/edit/password
+
+const validatePasswordData = (req) => {
+  // validating if the user is already logged in
+  const allowedEditFields = ["oldPassword", "newPassword"];
+
+  const isEditAllowed = Object.keys(req.body).every((field) =>
+    allowedEditFields.includes(field)
+  );
+
+  return isEditAllowed;
+};
+
+module.exports = {
+  validateSignUpData,
+  validateEditProfileData,
+  validatePasswordData,
+};

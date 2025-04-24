@@ -4,9 +4,6 @@ const User = require("../models/user");
 const authRouter = express.Router();
 const bcrypt = require("bcrypt");
 
-
-
-
 authRouter.post("/signup", async (req, res) => {
   try {
     // Validation of data
@@ -33,7 +30,6 @@ authRouter.post("/signup", async (req, res) => {
     res.status(400).send("Error adding user: " + err.message);
   }
 });
-
 
 // API - Login user
 authRouter.post("/login", async (req, res) => {
@@ -65,7 +61,18 @@ authRouter.post("/login", async (req, res) => {
   }
 });
 
+// API - Logout user
+authRouter.post("/logout", (req, res) => {
+  try {
+    // Clear the cookie
+    res.cookie("token", null, {
+      expires: new Date(Date.now()),
+    });
 
-
+    res.send("Logout successful");
+  } catch (err) {
+    res.status(400).send("Error logging out: " + err.message);
+  }
+});
 
 module.exports = authRouter;
