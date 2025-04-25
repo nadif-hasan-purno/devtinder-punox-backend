@@ -102,3 +102,16 @@
 - Create PATCH /profile/password
 - Create GET /profile/view
 - Make sure to validate all data in every POST and PATCH request. these very very important APIs.
+
+-
+- Read more about indexes in MongoDB
+- Why do we need index in DB?
+- What is the advantages and disadvantages of creating (lot of) indexes?
+- Create ConnectionRequestSchema
+- Send Connection Request API 
+- Proper validation of Data
+- Think about every corner cases and handle them
+- $or query $and query in mongoose - https://www.mongodb.com/docs/manual/reference/operator/query/or/#mongodb-query-op.-or
+- schema.pre("save") function
+- Read this article about compound indexes - https://www.mongodb.com/docs/manual/core/indexes/index-types/index-compound/
+- ALWAYS THINK ABOUT CORNER CASES IN API BECAUSE ATTACKERS ARE VERY CLEVER.
