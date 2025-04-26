@@ -92,12 +92,7 @@ requestRouter.post(
       const data = await connectionRequest.save();
 
       res.json({
-        message:
-          loggedInUser.firstName +
-          " has " +
-          status +
-          " the connection request from " +
-          fromUserId.firstName,
+        message: loggedInUser.firstName + " has " + status,
         data,
       });
 
