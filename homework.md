@@ -115,3 +115,8 @@
 - schema.pre("save") function
 - Read this article about compound indexes - https://www.mongodb.com/docs/manual/core/indexes/index-types/index-compound/
 - ALWAYS THINK ABOUT CORNER CASES IN API BECAUSE ATTACKERS ARE VERY CLEVER.
+
+
+
+- Write code with proper validations for POST /request/review/:status/:requestId
+- 
