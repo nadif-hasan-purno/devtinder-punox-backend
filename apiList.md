@@ -21,7 +21,6 @@
 
 - GET /user/requests
 - GET /user/connections
-
 - GET /feed - Gets you the profiles of other users on platform
 
 ## Status: ignored, interested, accepted, rejected
