@@ -54,4 +54,39 @@ userRouter.get("/user/requests/connections", userAuth, async (req, res) => {
   }
 });
 
+userRouter.get("/feed", userAuth, async (req, res) => {
+  try {
+    // User should see all the user cards except
+    // 0. his own card
+    // 1. ignored users
+    // 2. already sent connection requests
+    // 3. already connected users
+
+    const loggedInUser = req.user;
+
+    // Find all connection requests (sent and received)
+    const connectionRequests = await ConnectionRequests.find({
+      $or: [{ fromUserId: loggedInUser._id }, { toUserId: loggedInUser._id }],
+    }).select("fromUserId toUserId");
+
+    const hideUsersFromFeed = new Set();
+    connectionRequests.forEach((req) => {
+      hideUsersFromFeed.add(req.fromUserId.toString());
+      hideUsersFromFeed.add(req.toUserId.toString());
+    });
+
+    const users = await User.find({
+      $and: [
+        { _id: { $nin: Array.from(hideUsersFromFeed) } },
+        { _id: { $ne: loggedInUser._id } },
+      ],
+    }).select(USER_SAFE_FIELDS);
+
+    res.send(users);
+  } catch (error) {
+    console.error("Error fetching feed:", error);
+    return res.status(500).json({ message: "Internal server error" });
+  }
+});
+
 module.exports = userRouter;

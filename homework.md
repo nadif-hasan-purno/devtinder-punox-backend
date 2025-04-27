@@ -124,3 +124,8 @@
 - Create GET /user/requests/received with all the Checks
 - Create GET /user/connection
 - 
+
+
+- Logic for GET /feed API 
+- Explore the $nin, $and, $ne
+
